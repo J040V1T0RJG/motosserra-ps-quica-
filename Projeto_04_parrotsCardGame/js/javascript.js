@@ -5,21 +5,23 @@ while (numerosDeCard % 2 !== 0 || numerosDeCard < 4 || numerosDeCard > 14) {
     numerosDeCard = prompt(`Numero ${numerosDeCard} INVALIDO, teste novamente.
     numero de 4 a 14 e somente pares`)
 }
-const carta = `        <div class="card">
-<img src="img/front.png" >
-</div>`
 
-
-const cardsSelector = document.querySelector(".cards")
+const cardsSelector = document.querySelector("ul")
 for (let indice = 0; indice < numerosDeCard; indice++) {
     cardsSelector.innerHTML += `
-    <div class="card" onclick="virarCard(This)">
+    <li class="card" onclick="virarCard(this)">
         <img src="img/front.png" >
-    </div>
+    </li>
     `;
 }
-function virarCard() {
-    document.querySelector("img").innerHTML(`src="img/front.png"`)
+
+function virarCard(elemento) {
+    const cartaEscolhida = document.querySelector(".card")
+    if (cartaEscolhida > 2) {
+        cartaEscolhida.classList.remove("teste")
+    }
+        elemento.classList.toggle("teste")
+        
 
 }
 
