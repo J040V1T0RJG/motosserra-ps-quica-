@@ -8,11 +8,20 @@ while (numerosDeCard % 2 !== 0 || numerosDeCard < 4 || numerosDeCard > 14) {
 
 const cardsSelector = document.querySelector("ul")
 for (let indice = 0; indice < numerosDeCard; indice++) {
-    cardsSelector.innerHTML += `
-    <li class="card" onclick="virarCard(this)">
+    cardsSelector.innerHTML += /*`
+    <li class="card " onclick="virarCard(this)">
         <img src="img/front.png" >
     </li>
-    `;
+    `*/
+    `
+    <div class="card">
+        <li class="front-face face" onclick="virarCard(this)">
+            <img src="img/front.png" >
+        </li>
+    </div>
+    `
+    
+    ;
 }
 /*let imgArray = ["./img/bobrossparrot.gif", "./img/explodyparrot.gif", "./img/fiestaparrot.gif", "./img/metalparrot.gif", "./img/revertitparrot.gif", "./img/tripletsparrot.gif", "./img/unicornparrot.gif"]*/
 
@@ -41,6 +50,9 @@ function comparador() {
     return Math.random() - 0.5;
 }
 
+
+
+
 /*function EmbaralharEscolhaArray(escolhaArray) {
     for ( let indice = escolhaArray.length - 1; indice > 0; indice--) {
         const j = Math.floor(Math.random() * (indice + 1));
@@ -53,10 +65,14 @@ function comparador() {
 
 function virarCard(elemento) {
     const cartaEscolhida = document.querySelector(".card")
-    if (cartaEscolhida > 2) {
-        cartaEscolhida.classList.remove("teste")
+    if (cartaEscolhida !== null) {
+        cartaEscolhida.classList.add("front-face")
+        cartaEscolhida.classList.remove("back-face")
+
     }
-        elemento.classList.toggle("teste")
+        /*elemento.classList.remove("front-face")*/
+        elemento.classList.remove("front-face")
+        elemento.classList.add("back-face")
         
 
 }
