@@ -14,6 +14,42 @@ for (let indice = 0; indice < numerosDeCard; indice++) {
     </li>
     `;
 }
+/*let imgArray = ["./img/bobrossparrot.gif", "./img/explodyparrot.gif", "./img/fiestaparrot.gif", "./img/metalparrot.gif", "./img/revertitparrot.gif", "./img/tripletsparrot.gif", "./img/unicornparrot.gif"]*/
+
+let imgArray = [
+{ imagem: "./img/bobrossparrot.gif",  status: "em jogo" },
+{ imagem: "./img/explodyparrot.gif",  status: "em jogo" },
+{ imagem: "./img/fiestaparrot.gif",  status: "em jogo" },
+{ imagem: "./img/metalparrot.gif",  status: "em jogo" },
+{ imagem: "./img/revertitparrot.gif", status: "em jogo" }, 
+{ imagem: "./img/tripletsparrot.gif", status: "em jogo" }, 
+{ imagem: "./img/unicornparrot.gif", status: "em jogo" },
+]
+
+
+
+
+let escolhaArray = [];
+for (let indice = 0; indice < (numerosDeCard / 2); indice++) {
+    imgArray[indice] = indice
+    escolhaArray.push(imgArray[indice])
+    escolhaArray.push(imgArray[indice])
+}
+
+escolhaArray.sort(comparador);
+function comparador() {
+    return Math.random() - 0.5;
+}
+
+/*function EmbaralharEscolhaArray(escolhaArray) {
+    for ( let indice = escolhaArray.length - 1; indice > 0; indice--) {
+        const j = Math.floor(Math.random() * (indice + 1));
+        [escolhaArray[indice], escolhaArray[j]] = [escolhaArray[j], escolhaArray[indice]] 
+    } 
+    return escolhaArray; 
+}*/
+
+
 
 function virarCard(elemento) {
     const cartaEscolhida = document.querySelector(".card")
