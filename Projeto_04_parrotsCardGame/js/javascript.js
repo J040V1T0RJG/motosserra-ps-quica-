@@ -6,6 +6,33 @@ while (numerosDeCard % 2 !== 0 || numerosDeCard < 4 || numerosDeCard > 14) {
     numero de 4 a 14 e somente pares`)
 }
 
+let imgArray = [
+    { imagem: "./img/bobrossparrot.gif",  status: "em jogo" },
+    { imagem: "./img/explodyparrot.gif",  status: "em jogo" },
+    { imagem: "./img/fiestaparrot.gif",  status: "em jogo" },
+    { imagem: "./img/metalparrot.gif",  status: "em jogo" },
+    { imagem: "./img/revertitparrot.gif", status: "em jogo" }, 
+    { imagem: "./img/tripletsparrot.gif", status: "em jogo" }, 
+    { imagem: "./img/unicornparrot.gif", status: "em jogo" },
+    ]
+    
+
+
+    let escolhaArray = [];
+    for (let indice = 0; indice < (numerosDeCard / 2); indice++) {
+        /*imgArray[indice] = indice*/
+        escolhaArray.push(imgArray[indice].imagem)
+        escolhaArray.push(imgArray[indice].imagem)
+    }
+    
+    escolhaArray.sort(comparador);
+    function comparador() {
+        return Math.random() - 0.5;
+    }
+    
+
+
+
 const cardsSelector = document.querySelector("ul")
 for (let indice = 0; indice < numerosDeCard; indice++) {
     cardsSelector.innerHTML += /*`
@@ -14,41 +41,23 @@ for (let indice = 0; indice < numerosDeCard; indice++) {
     </li>
     `*/
     `
-    <div class="card">
-        <li class="front-face face" onclick="virarCard(this)">
+    <li class="card" onclick="virarCard(this)">
+        <div class="front-face face" >
             <img src="img/front.png" >
-        </li>
-    </div>
+        </div>
+        <div class="back-face face" >
+            <img src="${escolhaArray[indice]}" >
+        </div>
+    </li>
     `
     
     ;
 }
 /*let imgArray = ["./img/bobrossparrot.gif", "./img/explodyparrot.gif", "./img/fiestaparrot.gif", "./img/metalparrot.gif", "./img/revertitparrot.gif", "./img/tripletsparrot.gif", "./img/unicornparrot.gif"]*/
 
-let imgArray = [
-{ imagem: "./img/bobrossparrot.gif",  status: "em jogo" },
-{ imagem: "./img/explodyparrot.gif",  status: "em jogo" },
-{ imagem: "./img/fiestaparrot.gif",  status: "em jogo" },
-{ imagem: "./img/metalparrot.gif",  status: "em jogo" },
-{ imagem: "./img/revertitparrot.gif", status: "em jogo" }, 
-{ imagem: "./img/tripletsparrot.gif", status: "em jogo" }, 
-{ imagem: "./img/unicornparrot.gif", status: "em jogo" },
-]
 
 
 
-
-let escolhaArray = [];
-for (let indice = 0; indice < (numerosDeCard / 2); indice++) {
-    imgArray[indice] = indice
-    escolhaArray.push(imgArray[indice])
-    escolhaArray.push(imgArray[indice])
-}
-
-escolhaArray.sort(comparador);
-function comparador() {
-    return Math.random() - 0.5;
-}
 
 
 
@@ -64,12 +73,13 @@ function comparador() {
 
 
 function virarCard(elemento) {
-    const cartaEscolhida = document.querySelector(".card")
-    if (cartaEscolhida !== null) {
+    elemento.querySelector(".front-face").classList.add("virada")
+    elemento.querySelector(".back-face").classList.add("virada")
+    /*if (cartaEscolhida !== null) {
         cartaEscolhida.classList.add("front-face")
         cartaEscolhida.classList.remove("back-face")
 
-    }
+    }*/
         /*elemento.classList.remove("front-face")*/
         elemento.classList.remove("front-face")
         elemento.classList.add("back-face")
